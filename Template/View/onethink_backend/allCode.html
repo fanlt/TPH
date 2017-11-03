@@ -1,0 +1,43 @@
+    <div class="cf">
+        <div class="fl">
+            <a class="btn" href="<literal>{:U('/</literal>{$moduleName}/{$TableName}/add')}">新 增</a>
+        </div>
+    </div>
+    <div class="data-table table-striped">
+  <table class="">
+    <thead>
+        <tr>
+    <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+    <volist name="tableInfoArray" id="tableInfo">
+      <th>{$tableInfo[$commentNameKey]}</th>
+    </volist>
+    <th class="">操作</th>
+    </tr>
+    </thead>
+<literal><volist name="</literal>{$tableName}<literal>List" id="vo"></literal>
+<tr>
+
+<volist name="tableInfoArray" id="tableInfo">
+
+<?php 
+if($tableInfo[$columnNameKey]==$primaryKey){
+?>
+ <td><input class="ids" type="checkbox" name="id[]" value=<literal>{$vo.</literal>{$primaryKey}}/></td>
+
+ <?php }?>
+<td><literal>{$vo.</literal>{$tableInfo[$columnNameKey]}}</td>
+
+</volist>
+<td><a href="<literal>{:U('/</literal>{$moduleName}/{$TableName}/edit/id<literal>/'.$vo[</literal>{$primaryKey}<literal>])}</literal>">编辑</a> |
+<a href="<literal>{:U('/</literal>{$moduleName}/{$TableName}/delete/id<literal>/'.$vo[</literal>{$primaryKey}<literal>])}</literal>" onclick='return confirm("确定删除吗？")'>删除</a>
+</td>
+<tr>
+<literal></volist></literal>
+    </table>
+  </div>
+    <div class="page">
+        {$page}
+    </div>
+
+
+

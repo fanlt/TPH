@@ -1,0 +1,28 @@
+<form class="form-horizontal" method="post">
+	<volist name="tableInfoArray" id="tableInfo">
+	<if condition="$tableInfo[$columnNameKey] neq 'id'">
+	<div class="form-item cf">
+					<?php 
+if($tableInfo[$columnNameKey]!==$primaryKey){
+?>
+		<label class="item-label" for="{$tableInfo[$columnNameKey]}">{$tableInfo[$commentNameKey]}</label>
+		<?php } ?>
+		<div class="controls">
+			<?php 
+if($tableInfo[$columnNameKey]==$primaryKey){
+?>
+		<input type="hidden" class="text" placeholder="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"  value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+<?php }else{ ?>
+			<input type="text" class="text" placeholder="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"  value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+			<?php } ?>
+		</div>
+	</div>
+	<else /> <input type="hidden" name="id" value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+	
+	</if>
+	</volist>
+	<div class="form-item">
+			<input type="submit" value="提交" class="btn submit-btn" />
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+	</div>
+</form>

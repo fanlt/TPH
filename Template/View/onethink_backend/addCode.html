@@ -1,0 +1,40 @@
+
+<form class="form-horizontal" method="post">
+	<volist name="tableInfoArray" id="tableInfo">
+	<if condition="$tableInfo[$columnNameKey] neq $primaryKey">
+	<div class="form-item cf">
+		<label class="item-label" for="{$tableInfo[$columnNameKey]}">{:pressFieldDict($tableName, $tableInfo[$commentNameKey])}</label>
+		
+		<div class="controls">
+			<php>
+		  if($tableInfo['data_type']=='date'){
+
+		</php>
+			<input type="text" class="text  datetimepicker" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}" />
+			<php>}else{</php>
+<input type="text" class="text" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}" />
+			<php>}</php>
+		</div>
+	</div>
+	
+	</if>
+	</volist>
+	
+<div class="form-item">
+			<input type="submit" value="确定" class="btn submit-btn" />
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+	</div>
+</form>
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+$('.datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    })
+</script>
